@@ -1,11 +1,18 @@
-typedef float cmplx_t[2];
+#include <cmplx.h>
+#include <stdio.h>
 int main(){
-	cmplx_t i[5],o[5];
-	for(int i=0;i<4;i++){
-		scanf("%f %f",&i[i][0],&i[i][1]);
-	}
-	cmplx_idft(i,o,5);
-	for(int i=0;i<4;i++){
-		printf("\n%f %f",o[i][0],o[i][1]);
-	}
+    cmplx_t input[2], idft[2];
+    input[0][0]=3;
+    input[0][1]=3;
+    input[1][0]=-1;
+    input[1][1]=-1;
+    cmplx_idft(input,idft,2);
+    if(idft[0][0]!=1||idft[0][1]!=1||idft[1][0]!=2||idft[1][1]!=2){
+            printf("Test 8: fail!\n");
+            return 0;
+    }
+
+    printf("Test 8: ok!\n");
+
+return 0;
 }

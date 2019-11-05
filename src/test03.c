@@ -1,10 +1,16 @@
 #include <stdio.h>
-#include <math.h>
-#include "cmplx.h"
+#include <cmplx.h>
 typedef float cmplx_t[2];
 int main(){
-	cmplx_t i1;
-	scanf("%f %f",&i1[0],&i1[1]);
-	printf("\n%f",cmplx_mag(i1));
+    cmplx_t i;
+    i[0]=0;
+    i[1]=2;
+    if(2!=cmplx_mag(i)){
+            printf("Test 3: fail!\n");
+            return 0;
+    }
 
+    printf("Test 3: ok!\n");
+
+return 0;
 }

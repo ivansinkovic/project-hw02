@@ -1,7 +1,14 @@
-typedef float cmplx_t[2];
+#include <cmplx.h>
+#include <stdio.h>
+#include <math.h>
 int main(){
-	double mag,phs;
-	scanf("%f %f",&mag,&phs);
-	printf("\n%f",cmplx_real(mag,phs));
+    if(cmplx_real(2,(2*M_PI))!=2){
+            printf("Test 5: fail!\n");
+            return 0;
+    }
+
+    printf("Test 5: ok!\n");
+
+return 0;
 
 }

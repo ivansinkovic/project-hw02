@@ -1,5 +1,5 @@
-#include "cmplx.h"
 #include <math.h>
+#include <cmplx.h>
 typedef float cmplx_t[2];
 
 double cmplx_mag(cmplx_t a){
@@ -54,7 +54,12 @@ void cmplx_div(cmplx_t a, cmplx_t b, cmplx_t c){
 }
 
 void cmplx_mul(cmplx_t a, cmplx_t b, cmplx_t c){
-        c[0]=cmplx_real(cmplx_mag(a)*cmplx_mag(b),cmplx_phs(a)+cmplx_phs(b));
-        c[1]=cmplx_imag(cmplx_mag(a)*cmplx_mag(b),cmplx_phs(a)+cmplx_phs(b));
+        cmplx_t rez;
+
+    rez[0] = a[0] * b[0] - a[1] * b[1];
+    rez[1] = a[1] * b[0] + a[0] * b[1];
+
+    c[0] = rez[0];
+    c[1] = rez[1];
 }
 

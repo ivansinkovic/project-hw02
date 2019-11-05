@@ -1,18 +1,17 @@
-SRC=$(wildcard src/*.c)
-OBJ=$(patsubst %.c, %.o, $(SRC))
+SRC=src/cmplx.c src/io.c
+OBJ=$(patsubst %c, %o, $(SRC))
 
-EXE=exe/app.elf
 
-all: $(EXE)
+all: exe/test01.elf exe/test02.elf exe/test03.elf exe/test04.elf exe/test05.elf exe/test06.elf exe/test07.elf exe/test08.elf exe/testdft.elf exe/testidft.elf
 
-%.elf: $(OBJ)
-	gcc $(OBJ) -o $@
+exe/%.elf: src/%.o $(OBJ)
+	gcc $< $(OBJ) -o $@ -lm
 
 %.o: %.c
-	gcc -c $< -I inc/ -o $@
+	gcc -c $^ -I inc/ -o $@
 
 clean:
-	rm  $(OBJ) $(EXE)
+	rm -f exe/test*.elf src/*.o
 
 run: all
-	./exe/app.elf 2 2
+	./exe/test01.elf;./exe/test03.elf;./exe/test04.elf;./exe/test05.elf;./exe/test06.elf;./exe/test07.elf;./exe/test08.elf;./exe/testdft.elf;./exe/testidft.elf
